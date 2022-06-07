@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "兢赛ERP助手",
+    "version": "1.0.0",
+    "description": "兢赛ERP助手",
+    "permissions": ["storage", "tabs"],
+    "host_permissions": ["https://web.whatsapp.com/"],
+    "background": {
+        "service_worker": "background/main.ts"
+    },
+    "icons": {
+        "128": "assets/logo.png",
+        "16": "assets/logo.png",
+        "48": "assets/logo.png"
+    },
+    "action": {
+        "default_title": "Popup",
+        "default_popup": "popup/index.html",
+        "128": "assets/logo.png",
+        "16": "assets/logo.png",
+        "48": "assets/logo.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://*.whatsapp.com/*"],
+            "js": ["content-script/main.ts"]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["inject/jingsourcing-whatsapp.ts"],
+            "matches": ["https://web.whatsapp.com/*","https://pps.whatsapp.com/*"]
+        }
+    ]
+}
